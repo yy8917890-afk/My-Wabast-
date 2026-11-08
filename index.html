@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Wallet</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h2>My Wallet</h2>
+    <button onclick="toggleTheme()">🌙 Theme</button>
+</header>
+
+<section id="signup" class="box">
+    <h2>Create Account</h2>
+    <input id="newName" placeholder="Your Name">
+    <input id="newPhone" placeholder="Mobile Number">
+    <input id="newPassword" type="password" placeholder="Password">
+    <button onclick="signup()">Sign Up</button>
+    <p>Already have an account? <a href="#" onclick="showLogin()">Login</a></p>
+</section>
+
+<section id="loginBox" class="box">
+    <h2>Login</h2>
+    <input id="username" placeholder="Mobile Number">
+    <input id="password" type="password" placeholder="Password">
+    <button onclick="login()">Login</button>
+    <p>New user? <a href="#" onclick="showSignup()">Create Account</a></p>
+</section>
+
+<section id="dashboard" class="box hidden">
+    <h2>Welcome, <span id="profileName"></span></h2>
+    <p>Mobile: <span id="profilePhone"></span></p>
+
+    <div class="balance-box">
+        <p>Your Wallet Balance</p>
+        <h1>Rs. <span id="balance">0</span></h1>
+    </div>
+
+    <h3>Deposit</h3>
+    <p>JazzCash Number: <b>03218674905</b></p>
+    <input id="depositAmount" type="number" placeholder="Deposit Amount">
+    <input id="transactionId" placeholder="JazzCash Transaction ID">
+    <button onclick="requestDeposit()">Submit Deposit Request</button>
+
+    <h3>Withdraw</h3>
+    <input id="withdrawAmount" type="number" placeholder="Withdraw Amount">
+    <input id="paymentNumber" placeholder="Your JazzCash Number">
+    <button onclick="requestWithdraw()">Submit Withdraw Request</button>
+
+    <h3>Transaction History</h3>
+    <div id="history"></div>
+
+    <button onclick="logout()" class="logout">Logout</button>
+    <hr>
+    <h3>Admin Login</h3>
+    <input id="adminPassword" type="password" placeholder="Admin Password">
+    <button onclick="adminLogin()">Open Admin Panel</button>
+</section>
+
+<section id="adminPanel" class="box hidden">
+    <h2>Admin Panel</h2>
+
+    <h3>Deposit Requests</h3>
+    <div id="adminRequests"></div>
+
+    <h3>Withdraw Requests</h3>
+    <div id="adminWithdrawals"></div>
+
+    <hr>
+    <h3>All Users</h3>
+    <input id="userSearch" placeholder="Search by name or mobile number" oninput="renderUsers()">
+    <div id="allUsers"></div>
+
+    <hr>
+    <h3>Balance Control</h3>
+    <p>موبائل نمبر اور رقم درج کریں۔ مثبت رقم جمع ہوگی، منفی رقم کم ہوگی۔</p>
+    <input id="balancePhone" placeholder="User Mobile Number">
+    <input id="balanceAmount" type="number" placeholder="Amount (+ or -)">
+    <button onclick="adjustBalance()">Update User Balance</button>
+
+    <button onclick="backToDashboard()">Back to Dashboard</button>
+    <button onclick="adminLogout()" class="logout">Admin Logout</button>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>
